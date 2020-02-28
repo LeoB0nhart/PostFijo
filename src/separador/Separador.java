@@ -17,6 +17,7 @@ public class Separador {
 
     private static final String SEPARADORES = "!<>&|(){}[]+-*/%=;";
 
+
     public static ArrayList<String> separaPalabras(String archivo) {
         ArrayList<String> lineas = quitaEspaciosBlancos(Stream.leer(archivo));
         lineas = separaPunto(lineas);

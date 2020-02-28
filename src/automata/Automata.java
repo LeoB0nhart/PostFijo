@@ -57,6 +57,7 @@ public class Automata implements NumeroTokens {
 
     public static ArrayList<Lexema> generaLexemas(String ruta) {
         ArrayList<String> palabrasSeparadas = Separador.separaPalabras(ruta);
+
         ArrayList<Lexema> lexemas = new ArrayList<>();
 
         boolean isTokenFijo;

@@ -35,6 +35,10 @@ public class Lexema {
         this.token = token;
     }
 
+    public boolean is(int that) {
+        return that == token;
+    }
+
     @Override
     public String toString() {
         return "Lexema: " + this.lexema + "\t\tToken: " + this.token;
