@@ -15,11 +15,11 @@ import java.util.StringTokenizer;
  */
 public class Separador {
 
-    private static final String SEPARADORES = "!<>&|(){}[]+-*/%=;";
-
+    private static final String SEPARADORES = "!<>&|(){}[]+-*/%=;:";
 
     public static ArrayList<String> separaPalabras(String archivo) {
-        ArrayList<String> lineas = quitaEspaciosBlancos(Stream.leer(archivo));
+        ArrayList<String> lineas = Stream.leer(archivo);
+        lineas = quitaEspaciosBlancos(lineas);
         lineas = separaPunto(lineas);
         ArrayList<String> pSeparadas = new ArrayList<>();
 

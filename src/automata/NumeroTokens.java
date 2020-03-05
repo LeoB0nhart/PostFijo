@@ -20,18 +20,33 @@ public interface NumeroTokens {
     public static final int VARIABLE = 7;
     public static final int NUMERO_REAL = 8;
     public static final int NUMERO_ENTERO = 9;
-    public static final int CADENAS = 10;
+    public static final int STRING = 10;
 
     /**
      *
      */
     public static final int PARENTESIS_AP = 11;
     public static final int PARENTESIS_CI = 12;
-    
+
     public static final int CORCHETE_AP = 13;
     public static final int CORCHETE_CI = 14;
-    
+
     public static final int LLAVE_AP = 15;
     public static final int LLAVE_CI = 16;
+
+    public static final int TRUE = 17;
+    public static final int FALSE = 18;
+
+    /**
+     *
+     */
+    public static final int IF = 19;
+    public static final int ELSE = 20;
+    public static final int WHILE = 21;
+    public static final int DO = 22;
+    public static final int FOR = 23;
+    public static final int SWITCH = 24;
+    public static final int CASE = 25;
+    public static final int FUNCTION = 26;
 
 }

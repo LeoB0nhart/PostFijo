@@ -21,7 +21,8 @@ public class Automata implements NumeroTokens {
     private static final Object[][] AUTOMATAS = {
         {NUMERO_ENTERO, "[0-9]+"},
         {NUMERO_REAL, "[0-9]+\\.[0-9]+"},
-        {VARIABLE, "[a-zA-Z]+"}
+        {VARIABLE, "[a-zA-Z]+"},
+        {STRING, "\"(.)+\""}
     };
 
     /*
@@ -52,7 +53,17 @@ public class Automata implements NumeroTokens {
         {CORCHETE_AP, "["},
         {CORCHETE_CI, "]"},
         {LLAVE_AP, "{"},
-        {LLAVE_CI, "}"}
+        {LLAVE_CI, "}"},
+        {LLAVE_CI, "if"},
+        {LLAVE_CI, "else"},
+        {LLAVE_CI, "switch"},
+        {LLAVE_CI, "case"},
+        {LLAVE_CI, "for"},
+        {LLAVE_CI, "while"},
+        {LLAVE_CI, "do"},
+        {LLAVE_CI, "function"},
+        {LLAVE_CI, "true"},
+        {LLAVE_CI, "false"}
     };
 
     public static ArrayList<Lexema> generaLexemas(String ruta) {
