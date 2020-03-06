@@ -49,4 +49,9 @@ public interface NumeroTokens {
     public static final int CASE = 25;
     public static final int FUNCTION = 26;
 
+    public static final int COMILLAS = 27;
+
+    public static final int PRINT = 28;
+    public static final int WRITE = 29;
+
 }

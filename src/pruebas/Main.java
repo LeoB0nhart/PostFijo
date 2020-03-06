@@ -16,7 +16,7 @@ import lexema.Lexema;
 public class Main {
 
     public static void main(String[] args) {
-        ArrayList<Lexema> lexemas = Automata.generaLexemas("fuentes/exp");
+        ArrayList<Lexema> lexemas = Automata.generaLexemas("fuentes/ejemploFuente");
 
         for (Lexema lexema : lexemas) {
             System.out.println(lexema);

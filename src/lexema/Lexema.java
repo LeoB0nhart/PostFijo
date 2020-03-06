@@ -41,7 +41,7 @@ public class Lexema {
 
     @Override
     public String toString() {
-        return "Lexema: " + this.lexema + "\t\tToken: " + this.token;
+        return "Lexema: " + this.lexema + "\t\t\tToken: " + this.token;
     }
 
 }
