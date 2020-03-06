@@ -9,6 +9,7 @@ import automata.Automata;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import lexema.Lexema;
+import tablaSimbolos.GeneraTablaSimbolos;
 
 /**
  *
@@ -39,11 +40,14 @@ public class Ventana extends javax.swing.JFrame {
         pos = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         path = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         nor = new javax.swing.JTextArea();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        btnAbrir = new javax.swing.JMenuItem();
+        btnSepararTokens = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -63,13 +67,6 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Seleccionar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         path.setText("No hay un archivo seleccionado.");
 
         jLabel3.setText("Expresión algebraica normal:");
@@ -78,27 +75,47 @@ public class Ventana extends javax.swing.JFrame {
         nor.setRows(5);
         jScrollPane2.setViewportView(nor);
 
+        jMenu1.setText("Archivo");
+
+        btnAbrir.setText("Abrir");
+        btnAbrir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAbrirActionPerformed(evt);
+            }
+        });
+        jMenu1.add(btnAbrir);
+
+        btnSepararTokens.setText("Separar Tokens");
+        btnSepararTokens.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSepararTokensActionPerformed(evt);
+            }
+        });
+        jMenu1.add(btnSepararTokens);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(286, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(267, 267, 267))
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(path))
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(path)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel1)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,13 +123,11 @@ public class Ventana extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(path))
+                .addComponent(path)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
@@ -130,7 +145,8 @@ public class Ventana extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirActionPerformed
+        // TODO add your handling code here:
         JFileChooser jfc = new JFileChooser();
         jfc.setSize(600, 600);
         int res = jfc.showOpenDialog(this);
@@ -150,7 +166,31 @@ public class Ventana extends javax.swing.JFrame {
             }
 
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnAbrirActionPerformed
+
+    private void btnSepararTokensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSepararTokensActionPerformed
+        // TODO add your handling code here:
+        ArrayList<String> tablas = new ArrayList<>();
+        JFileChooser jfc = new JFileChooser();
+        jfc.setSize(600, 600);
+        int res = jfc.showOpenDialog(this);
+
+        if (res == JFileChooser.APPROVE_OPTION) {
+            pos.setText("");
+            filePath = jfc.getSelectedFile().getAbsolutePath();
+            path.setText(filePath);
+
+            ArrayList<Lexema> lexemas = Automata.generaLexemas(filePath);
+            GeneraTablaSimbolos generaTablaSimbolos = new GeneraTablaSimbolos(lexemas);
+            for (Lexema lexema : lexemas) {
+                System.out.println(lexema);
+            }
+            tablas=generaTablaSimbolos.generaTabla();
+            for(String linea : tablas){
+                System.out.println(linea);
+            }
+        }
+    }//GEN-LAST:event_btnSepararTokensActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,11 +228,14 @@ public class Ventana extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem btnAbrir;
+    private javax.swing.JMenuItem btnSepararTokens;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea nor;
