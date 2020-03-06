@@ -57,16 +57,16 @@ public class Automata implements NumeroTokens {
         {CORCHETE_CI, "]"},
         {LLAVE_AP, "{"},
         {LLAVE_CI, "}"},
-        {LLAVE_CI, "if"},
-        {LLAVE_CI, "else"},
-        {LLAVE_CI, "switch"},
-        {LLAVE_CI, "case"},
-        {LLAVE_CI, "for"},
-        {LLAVE_CI, "while"},
-        {LLAVE_CI, "do"},
-        {LLAVE_CI, "function"},
-        {LLAVE_CI, "true"},
-        {LLAVE_CI, "false"}
+        {IF, "if"},
+        {ELSE, "else"},
+        {SWITCH, "switch"},
+        {CASE, "case"},
+        {FOR, "for"},
+        {WHILE, "while"},
+        {DO, "do"},
+        {FUNCTION, "function"},
+        {TRUE, "true"},
+        {FALSE, "false"}
     };
 
     public static ArrayList<Lexema> generaLexemas(String ruta) {

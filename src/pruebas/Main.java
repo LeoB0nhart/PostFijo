@@ -8,6 +8,7 @@ package pruebas;
 import automata.Automata;
 import java.util.ArrayList;
 import lexema.Lexema;
+import tsim.Tabla;
 
 /**
  *
@@ -17,9 +18,7 @@ public class Main {
 
     public static void main(String[] args) {
         ArrayList<Lexema> lexemas = Automata.generaLexemas("fuentes/ejemploFuente");
-
-        for (Lexema lexema : lexemas) {
-            System.out.println(lexema);
-        }
+        Tabla t = Tabla.generaTabla(lexemas, 0, null);
+        t.imprime(0);
     }
 }

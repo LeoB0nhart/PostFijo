@@ -1,8 +1,23 @@
 boolean varBooleana = true;
 int varEntera = 5;
-dobule varDoble = 5.5;
-string texto = "asdasd";
+double varDoble = 5.5;
 
-if(a>=b && x != 9){
-    print("Una cadena de texto");
+function miFuncion(){
+    double unaVar = 8.2;
+
+    if(elBrian!=10){
+        string txt = "El brian es joto";
+        if(abc!=10){
+            string asdsad = "El pablo tambien xd";
+            while(x>=10 && 20 != unNumero){
+                string texto = "Holis";
+            }
+        }
+    }
 }
+
+function miOtraFuncion(){
+    string a = "asdsad";
+}
+
+int x = 22;
