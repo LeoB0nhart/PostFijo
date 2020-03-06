@@ -1,14 +1,16 @@
+{
 boolean varBooleana = true;
 int varEntera = 5;
 double varDoble = 5.5;
-
+int varNoInit;
+int noInit;
 function miFuncion(){
     double unaVar = 8.2;
 
     if(elBrian!=10){
-        string txt = "El brian es joto";
+        string txt = "Var1";
         if(abc!=10){
-            string asdsad = "El pablo tambien xd";
+            string asdsad = "Var2";
             while(x>=10 && 20 != unNumero){
                 string texto = "Holis";
             }
@@ -21,3 +23,4 @@ function miOtraFuncion(){
 }
 
 int x = 22;
+}

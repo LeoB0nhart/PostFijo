@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import lexema.Lexema;
 import tablaSimbolos.GeneraTablaSimbolos;
+import tsim.Tabla;
 
 /**
  *
@@ -85,7 +86,7 @@ public class Ventana extends javax.swing.JFrame {
         });
         jMenu1.add(btnAbrir);
 
-        btnSepararTokens.setText("Separar Tokens");
+        btnSepararTokens.setText("Generar tablas");
         btnSepararTokens.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSepararTokensActionPerformed(evt);
@@ -181,14 +182,8 @@ public class Ventana extends javax.swing.JFrame {
             path.setText(filePath);
 
             ArrayList<Lexema> lexemas = Automata.generaLexemas(filePath);
-            GeneraTablaSimbolos generaTablaSimbolos = new GeneraTablaSimbolos(lexemas);
-            for (Lexema lexema : lexemas) {
-                System.out.println(lexema);
-            }
-            tablas=generaTablaSimbolos.generaTabla();
-            for(String linea : tablas){
-                System.out.println(linea);
-            }
+            Tabla t = Tabla.generaTabla(lexemas, 0, null);
+            t.imprime(0);
         }
     }//GEN-LAST:event_btnSepararTokensActionPerformed
 

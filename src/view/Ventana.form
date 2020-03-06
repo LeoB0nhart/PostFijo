@@ -19,7 +19,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="btnSepararTokens">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Separar Tokens"/>
+                <Property name="text" type="java.lang.String" value="Generar tablas"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSepararTokensActionPerformed"/>

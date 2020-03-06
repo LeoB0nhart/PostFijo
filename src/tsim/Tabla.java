@@ -77,8 +77,13 @@ public class Tabla implements NumeroTokens {
         actual.setPosIni(pos);
 
         for (int i = pos; i < fuente.size(); i++) {
-
-            if (fuente.get(i).is(VARIABLE) && fuente.get(i - 1).is(TIPO_DATO) && fuente.get(i + 1).is(OPERADOR_ASIGNACION)) {
+            if ((fuente.get(i).is(VARIABLE) && fuente.get(i - 1).is(TIPO_DATO)) && fuente.get(i + 1).is(PUNTO_COMA)) {
+                Variable temp = new Variable(fuente.get(i - 1), fuente.get(i));
+                ArrayList<Lexema> valor = new ArrayList<>();
+                temp.setValor(valor);
+                actual.getVariables().add(temp);
+            }else
+            if ((fuente.get(i).is(VARIABLE) && fuente.get(i - 1).is(TIPO_DATO) && fuente.get(i + 1).is(OPERADOR_ASIGNACION))) {
 
                 Variable temp = new Variable(fuente.get(i - 1), fuente.get(i));
                 ArrayList<Lexema> valor = new ArrayList<>();
