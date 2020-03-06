@@ -1,0 +1,8 @@
+boolean varBooleana = true;
+int varEntera = 5;
+dobule varDoble = 5.5;
+string texto = "asdasd";
+
+if(a>=b && x != 9){
+    print("Una cadena de texto");
+}

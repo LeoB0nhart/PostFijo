@@ -22,7 +22,7 @@ public class Automata implements NumeroTokens {
         {NUMERO_ENTERO, "[0-9]+"},
         {NUMERO_REAL, "[0-9]+\\.[0-9]+"},
         {VARIABLE, "[a-zA-Z]+"},
-        {STRING, "\"(.)+\""}
+        {STRING, "\"(.)*\""}
     };
 
     /*
@@ -31,9 +31,12 @@ public class Automata implements NumeroTokens {
     private static final Object[][] TOKENS_FIJOS = {
         {TIPO_DATO, "int"},
         {TIPO_DATO, "double"},
-        {TIPO_DATO, "String"},
+        {TIPO_DATO, "string"},
         {TIPO_DATO, "boolean"},
+        {PRINT, "print"},
+        {WRITE, "write"},
         {PUNTO_COMA, ";"},
+        {COMILLAS, "\""},
         {OPERADOR_ARITMETICO, "+"},
         {OPERADOR_ARITMETICO, "-"},
         {OPERADOR_ARITMETICO, "*"},
@@ -73,6 +76,7 @@ public class Automata implements NumeroTokens {
 
         boolean isTokenFijo;
         for (String ps : palabrasSeparadas) {
+
             isTokenFijo = false;
 
             for (Object[] token : TOKENS_FIJOS) {

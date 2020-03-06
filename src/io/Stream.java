@@ -20,7 +20,7 @@ public class Stream {
         ArrayList<String> lineas = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
             while ((txt = br.readLine()) != null) {
-                lineas.add(txt);
+                lineas.add(txt.trim());
             }
             br.close();
         } catch (Exception e) {

@@ -5,21 +5,17 @@
  */
 package pruebas;
 
-import automata.Automata;
 import java.util.ArrayList;
-import lexema.Lexema;
+import java.util.StringTokenizer;
 
 /**
  *
  * @author alan
  */
-public class Main {
-
+public class Pruebas {
+    
     public static void main(String[] args) {
-        ArrayList<Lexema> lexemas = Automata.generaLexemas("fuentes/ejemploFuente");
-
-        for (Lexema lexema : lexemas) {
-            System.out.println(lexema);
-        }
+        System.out.println("\"Una cadena de texto\"".matches("\"(.)*\""));
+        
     }
 }

@@ -19,6 +19,7 @@ public class Separador {
 
     public static ArrayList<String> separaPalabras(String archivo) {
         ArrayList<String> lineas = Stream.leer(archivo);
+        lineas = identificaStrings(lineas);
         lineas = quitaEspaciosBlancos(lineas);
         lineas = separaPunto(lineas);
         ArrayList<String> pSeparadas = new ArrayList<>();
@@ -75,9 +76,13 @@ public class Separador {
 
         StringTokenizer tokenizer;
         for (String linea : lineas) {
-            tokenizer = new StringTokenizer(linea);
-            while (tokenizer.hasMoreTokens()) {
-                lineasSinBlancos.add(tokenizer.nextToken());
+            if (!linea.startsWith("\"")) {
+                tokenizer = new StringTokenizer(linea);
+                while (tokenizer.hasMoreTokens()) {
+                    lineasSinBlancos.add(tokenizer.nextToken());
+                }
+            } else {
+                lineasSinBlancos.add(linea);
             }
         }
         return lineasSinBlancos;
@@ -88,12 +93,39 @@ public class Separador {
 
         String[] stringSplit;
         for (String l0 : lineas) {
-            stringSplit = l0.split("\\\\.");
-            for (int i = 0; i < stringSplit.length; i++) {
-                l.add(stringSplit[i]);
-                if (i != stringSplit.length - 1) {
-                    l.add(".");
+            if (!l0.startsWith("\"")) {
+                stringSplit = l0.split("\\\\.");
+                for (int i = 0; i < stringSplit.length; i++) {
+                    l.add(stringSplit[i]);
+                    if (i != stringSplit.length - 1) {
+                        l.add(".");
+                    }
                 }
+            } else {
+                l.add(l0);
+            }
+        }
+        return l;
+    }
+
+    private static ArrayList<String> identificaStrings(ArrayList<String> lineas) {
+        ArrayList<String> l = new ArrayList<>();
+        StringTokenizer tokenizer;
+
+        String nextToken = "";
+
+        for (String linea : lineas) {
+            tokenizer = new StringTokenizer(linea, "\"", true);
+            while (tokenizer.hasMoreTokens()) {
+                nextToken = tokenizer.nextToken();
+
+                if (nextToken.equals("\"")) {
+                    nextToken = nextToken + tokenizer.nextToken() + tokenizer.nextToken();
+                    l.add(nextToken);
+                } else {
+                    l.add(nextToken);
+                }
+
             }
         }
         return l;
