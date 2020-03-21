@@ -77,13 +77,13 @@ public class Tabla implements NumeroTokens {
         actual.setPosIni(pos);
 
         for (int i = pos; i < fuente.size(); i++) {
+
             if ((fuente.get(i).is(VARIABLE) && fuente.get(i - 1).is(TIPO_DATO)) && fuente.get(i + 1).is(PUNTO_COMA)) {
                 Variable temp = new Variable(fuente.get(i - 1), fuente.get(i));
                 ArrayList<Lexema> valor = new ArrayList<>();
                 temp.setValor(valor);
                 actual.getVariables().add(temp);
-            }else
-            if ((fuente.get(i).is(VARIABLE) && fuente.get(i - 1).is(TIPO_DATO) && fuente.get(i + 1).is(OPERADOR_ASIGNACION))) {
+            } else if ((fuente.get(i).is(VARIABLE) && fuente.get(i - 1).is(TIPO_DATO) && fuente.get(i + 1).is(OPERADOR_ASIGNACION))) {
 
                 Variable temp = new Variable(fuente.get(i - 1), fuente.get(i));
                 ArrayList<Lexema> valor = new ArrayList<>();
@@ -102,7 +102,11 @@ public class Tabla implements NumeroTokens {
 
                 temp.setValor(valor);
                 actual.getVariables().add(temp);
-
+                
+            } else  if (fuente.get(i).is(VARIABLE) && fuente.get(i + 1).is(OPERADOR_ASIGNACION)) {
+                String nombreVariable = fuente.get(i).getLexema();
+                System.out.print("Hola mundo: "+nombreVariable);
+                
             } else if (fuente.get(i).is(LLAVE_AP)) {
 
                 Tabla t = generaTabla(fuente, i + 1, actual);
@@ -118,11 +122,11 @@ public class Tabla implements NumeroTokens {
             }
 
         }
-
         return actual;
     }
 
     public void imprime(int n) {
+        String[] arrayRepetidas = new String[variables.size()];
 
         String nTabs = "";
 
@@ -139,6 +143,15 @@ public class Tabla implements NumeroTokens {
         if (hijas.size() != 0) {
             for (int i = 0; i < hijas.size(); i++) {
                 hijas.get(i).imprime(n + 1);
+            }
+        }
+
+        for (int i = 0; i < variables.size(); i++) {
+            arrayRepetidas[i] = variables.get(i).getNombre().getLexema();
+            for (int j = 0; j < variables.size(); j++) {
+                if (arrayRepetidas[i].equals(arrayRepetidas[j]) && j != i) {
+                    System.out.println("ERROR: La variable " + arrayRepetidas[j] + " está repetida");
+                }
             }
         }
 

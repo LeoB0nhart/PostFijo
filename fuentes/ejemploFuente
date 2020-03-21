@@ -11,6 +11,8 @@ function miFuncion(){
         string txt = "Var1";
         if(abc!=10){
             string asdsad = "Var2";
+			varDoble = varNoInit+unaVar+varBooleana;
+			
             while(x>=10 && 20 != unNumero){
                 string texto = "Holis";
             }

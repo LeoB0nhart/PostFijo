@@ -6,6 +6,7 @@
 package view;
 
 import automata.Automata;
+import codigoIntermedio.GeneraEtiquetas;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import lexema.Lexema;
@@ -49,6 +50,7 @@ public class Ventana extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         btnAbrir = new javax.swing.JMenuItem();
         btnSepararTokens = new javax.swing.JMenuItem();
+        btnCodigoIntermedio = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -93,6 +95,14 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
         jMenu1.add(btnSepararTokens);
+
+        btnCodigoIntermedio.setText("Código Intermedio");
+        btnCodigoIntermedio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCodigoIntermedioActionPerformed(evt);
+            }
+        });
+        jMenu1.add(btnCodigoIntermedio);
 
         jMenuBar1.add(jMenu1);
 
@@ -187,6 +197,24 @@ public class Ventana extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSepararTokensActionPerformed
 
+    private void btnCodigoIntermedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCodigoIntermedioActionPerformed
+        // TODO add your handling code here:
+        ArrayList<String> tablas = new ArrayList<>();
+        JFileChooser jfc = new JFileChooser();
+        jfc.setSize(600, 600);
+        int res = jfc.showOpenDialog(this);
+
+        if (res == JFileChooser.APPROVE_OPTION) {
+            pos.setText("");
+            filePath = jfc.getSelectedFile().getAbsolutePath();
+            path.setText(filePath);
+
+            ArrayList<Lexema> lexemas = Automata.generaLexemas(filePath);
+            GeneraEtiquetas t = new GeneraEtiquetas(lexemas);
+            t.generarEtiquetas();
+        }
+    }//GEN-LAST:event_btnCodigoIntermedioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -224,6 +252,7 @@ public class Ventana extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem btnAbrir;
+    private javax.swing.JMenuItem btnCodigoIntermedio;
     private javax.swing.JMenuItem btnSepararTokens;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
